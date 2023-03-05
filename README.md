@@ -125,7 +125,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ### Deletar curso
 
-`DELETE` /profit/api/user/{id}curso/{id}
+`DELETE` /profit/api/user/{id}/curso/{id}
 
 **Campos**
 
@@ -377,7 +377,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 |-|-
 | 200 | dados dos usuários retornados
 | 404 | usuarios não encontrados
-| 424 | sem permissão
+| 401 | sem permissão
 | 500 | internal server error
 
 ---
