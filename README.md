@@ -125,6 +125,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 | 408 | tempo esgotado
 | 500 | internal server error
 
+---
 ### Deletar curso
 
 `DELETE` /profit/api/user/{userId}/curso/{cursoId}
@@ -162,6 +163,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 | 408 | tempo esgotado
 | 500 | internal server error
 
+---
 ### Listar Cursos
 
 `GET` /profit/api/cursos
@@ -328,6 +330,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 | 408 | tempo esgotado
 | 500 | internal server error
 
+---
 ### Deletar usuario
 
 `DELETE` /profit/api/usuario/{id}
@@ -361,6 +364,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 | 408 | tempo esgotado
 | 500 | internal server error
 
+---
 ### Listar usuarios
 
 `GET` /profit/api/usuarios
@@ -391,5 +395,3 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 | 404 | usuarios não encontrados
 | 401 | sem permissão
 | 500 | internal server error
-
----
