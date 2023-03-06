@@ -32,13 +32,13 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Requisição**
 
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|---
-| id_usuario | int | sim | id do usuario previamente cadastrado
-| nome | texto | sim | o nome do curso
-| duracao | LocalTime | sim | a duração do curso
-| descricao | texto | sim | descrição do curso
-| link | texto | sim | link do curso
+| campo      | tipo      | obrigatório | descrição                            |
+| ---------- | --------- | :---------: | ------------------------------------ |
+| id_usuario | int       |     sim     | id do usuario previamente cadastrado |
+| nome       | texto     |     sim     | o nome do curso                      |
+| duracao    | LocalTime |     sim     | a duração do curso                   |
+| descricao  | texto     |     sim     | descrição do curso                   |
+| link       | texto     |     sim     | link do curso                        |
 
 **Exemplo de corpo de requisição**
 
@@ -54,11 +54,11 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 201 | curso cadastrado com sucesso
-| 400 | campos inválidos
-| 408 | tempo esgotado
+| codigo | descricao                    |
+| ------ | ---------------------------- |
+| 201    | curso cadastrado com sucesso |
+| 400    | campos inválidos             |
+| 408    | tempo esgotado               |
 
 ---
 
@@ -81,11 +81,11 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 ```
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 200 | dados do curso retornados
-| 404 | não existe curso com o id informado
-| 500 | internal server error
+| codigo | descricao                           |
+| ------ | ----------------------------------- |
+| 200    | dados do curso retornados           |
+| 404    | não existe curso com o id informado |
+| 500    | internal server error               |
 
 ---
 
@@ -95,13 +95,13 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Edição**
 
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|---
-| id_usuario | int | sim | id do usuario previamente cadastrado
-| nome | texto | sim | o nome do curso
-| duracao | LocalTime | sim | a duração do curso
-| descricao | texto | sim | descrição do curso
-| link | texto | sim | link do curso
+| campo      | tipo      | obrigatório | descrição                            |
+| ---------- | --------- | :---------: | ------------------------------------ |
+| id_usuario | int       |     sim     | id do usuario previamente cadastrado |
+| nome       | texto     |     sim     | o nome do curso                      |
+| duracao    | LocalTime |     sim     | a duração do curso                   |
+| descricao  | texto     |     sim     | descrição do curso                   |
+| link       | texto     |     sim     | link do curso                        |
 
 **Exemplo de corpo de requisição**
 
@@ -117,13 +117,13 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 200 | curso alterado com sucesso
-| 400 | campos inválidos
-| 404 | não existe curso com o id informado
-| 408 | tempo esgotado
-| 500 | internal server error
+| codigo | descricao                           |
+| ------ | ----------------------------------- |
+| 200    | curso alterado com sucesso          |
+| 400    | campos inválidos                    |
+| 404    | não existe curso com o id informado |
+| 408    | tempo esgotado                      |
+| 500    | internal server error               |
 
 ---
 ### Deletar curso
@@ -132,13 +132,14 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos**
 
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|---
-| id_usuario | int | sim | id do usuario previamente cadastrado
-| nome | texto | sim | o nome do curso
-| duracao | LocalTime | sim | a duração do curso
-| descricao | texto | sim | descrição do curso
-| link | texto | sim | link do curso
+| campo      | tipo      | obrigatório | descrição                            |
+| ---------- | --------- | :---------: | ------------------------------------ |
+| id_usuario | int       |     sim     | id do usuario previamente cadastrado |
+| nome       | texto     |     sim     | o nome do curso                      |
+| duracao    | LocalTime |     sim     | a duração do curso                   |
+| descricao  | texto     |     sim     | descrição do curso                   |
+| link       | texto     |     sim     | link do curso                        |
+
 
 **Exemplo de corpo de requisição**
 
@@ -156,12 +157,12 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 200 | curso removido com sucesso
-| 404 | não existe curso com o id informado
-| 408 | tempo esgotado
-| 500 | internal server error
+| codigo | descricao                           |
+| ------ | ----------------------------------- |
+| 200    | curso removido com sucesso          |
+| 404    | não existe curso com o id informado |
+| 408    | tempo esgotado                      |
+| 500    | internal server error               |
 
 ---
 ### Listar Cursos
@@ -188,11 +189,11 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 ```
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 200 | dados do cursos retornados
-| 404 | cursos não encontrados
-| 500 | internal server error
+| codigo | descricao                  |
+| ------ | -------------------------- |
+| 200    | dados do cursos retornados |
+| 404    | cursos não encontrados     |
+| 500    | internal server error      |
 
 <br>
 
@@ -205,13 +206,14 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Requisição**
 
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|---
-| valor_inicial | decimal| sim | o valor inicial do investimento
-| valor_aporte | decimal | nao | a valor do aporte mensal
-| tipo_investimento | texto | sim | o tipo do investimento
-| nivel| texto | sim | nivel de risco do investimento
-| tempo_invest | texto | sim | tempo que irá manter o dinheiro investido
+| campo              | tipo    | obrigatório | descrição                                 |
+| ------------------ | ------- | :---------: | ----------------------------------------- |
+| valor_inicial      | decimal |     sim     | o valor inicial do investimento           |
+| valor_aporte       | decimal |     nao     | a valor do aporte mensal                  |
+| tipo_investimento  | texto   |     sim     | o tipo do investimento                    |
+| nivel              | texto   |     sim     | nivel de risco do investimento            |
+| tempo_invest       | texto   |     sim     | tempo que irá manter o dinheiro investido |
+
 
 **Exemplo de corpo de requisição**
 
@@ -227,10 +229,10 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 201 | simulação retornada com sucesso
-| 400 | campos inválidos
+| codigo | descricao                       |
+| ------ | ------------------------------- |
+| 201    | simulação retornada com sucesso |
+| 400    | campos inválidos                |
 
 <br>
 
@@ -244,12 +246,12 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Requisição**
 
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|---
-| nome | texto | sim | o nome completo do usuário
-| cpf | texto | sim | o cep do usuario deve conter 11 digitos
-| email | email | sim | o email do usuário
-| telefone | texto | sim | o telefone do usuario
+| campo    | tipo  | obrigatório | descrição                               |
+| -------- | ----- | :---------: | --------------------------------------- |
+| nome     | texto |     sim     | o nome completo do usuário              |
+| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos |
+| email    | email |     sim     | o email do usuário                      |
+| telefone | texto |     sim     | o telefone do usuario                   |
 
 **Exemplo de corpo de requisição**
 
@@ -264,11 +266,11 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 201 | usuario cadastrado com sucesso
-| 400 | campos inválidos
-| 408 | tempo esgotado
+| codigo | descricao                      |
+| ------ | ------------------------------ |
+| 201    | usuario cadastrado com sucesso |
+| 400    | campos inválidos               |
+| 408    | tempo esgotado                 |
 
 ---
 
@@ -288,11 +290,11 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 ```
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 200 | dados do curso retornados
-| 404 | não existe cusuario com o id informado
-| 500 | internal server error
+| codigo | descricao                              |
+| ------ | -------------------------------------- |
+| 200    | dados do curso retornados              |
+| 404    | não existe cusuario com o id informado |
+| 500    | internal server error                  |
 
 ---
 
@@ -302,12 +304,12 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Edição**
 
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|---
-| nome | texto | sim | o nome completo do usuário
-| cpf | texto | sim | o cep do usuario deve conter 11 digitos
-| email | email | sim | o email do usuário
-| telefone | texto | sim | o telefone do usuario
+| campo    | tipo  | obrigatório | descrição                               |
+| -------- | ----- | :---------: | --------------------------------------- |
+| nome     | texto |     sim     | o nome completo do usuário              |
+| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos |
+| email    | email |     sim     | o email do usuário                      |
+| telefone | texto |     sim     | o telefone do usuario                   |
 
 **Exemplo de corpo de requisição**
 
@@ -322,13 +324,13 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 200 | usuario alterado com sucesso
-| 400 | campos inválidos
-| 404 | não existe curso com o id informado
-| 408 | tempo esgotado
-| 500 | internal server error
+| codigo | descricao                           |
+| ------ | ----------------------------------- |
+| 200    | usuario alterado com sucesso        |
+| 400    | campos inválidos                    |
+| 404    | não existe curso com o id informado |
+| 408    | tempo esgotado                      |
+| 500    | internal server error               |
 
 ---
 ### Deletar usuario
@@ -337,12 +339,12 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos**
 
-| campo | tipo | obrigatório | descrição
-|-------|------|:-------------:|---
-| nome | texto | sim | o nome completo do usuário
-| cpf | texto | sim | o cep do usuario deve conter 11 digitos
-| email | email | sim | o email do usuário
-| telefone | texto | sim | o telefone do usuario
+| campo    | tipo  | obrigatório | descrição                               |
+| -------- | ----- | :---------: | --------------------------------------- |
+| nome     | texto |     sim     | o nome completo do usuário              |
+| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos |
+| email    | email |     sim     | o email do usuário                      |
+| telefone | texto |     sim     | o telefone do usuario                   |
 
 **Exemplo de corpo de requisição**
 
@@ -357,12 +359,12 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 200 | usuario removido com sucesso
-| 404 | não existe usuario com o id informado
-| 408 | tempo esgotado
-| 500 | internal server error
+| codigo | descricao                             |
+| ------ | ------------------------------------- |
+| 200    | usuario removido com sucesso          |
+| 404    | não existe usuario com o id informado |
+| 408    | tempo esgotado                        |
+| 500    | internal server error                 |
 
 ---
 ### Listar usuarios
@@ -389,9 +391,9 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 ```
 **Códigos de Repostas**
 
-| codigo | descricao
-|-|-
-| 200 | dados dos usuários retornados
-| 404 | usuarios não encontrados
-| 401 | sem permissão
-| 500 | internal server error
+| codigo | descricao                     |
+| ------ | ----------------------------- |
+| 200    | dados dos usuários retornados |
+| 404    | usuarios não encontrados      |
+| 401    | sem permissão                 |
+| 500    | internal server error         |
