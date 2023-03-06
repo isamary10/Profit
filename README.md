@@ -6,23 +6,26 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ## Endepoints
 
-- Cursos
+- [Cursos](#cursos)
   - [cadastrar](#cadastrar-curso)
+  - [detalhar](#detalhar-curso)
   - [editar](#editar-curso)
   - [delelar](#deletar-curso)
   - [listar](#listar-cursos)
 
-- Simulação de investimento
+- [Simulação de investimento](#simulacao)
   - [simular](#simular-investimento)
 
-- Usuários
+- [Usuarios](#usuarios)
   - [cadastrar](#cadastrar-usuario)
+  - [detalhar](#detalhar-usuario)
   - [editar](#editar-usuario)
-  - [delelar](#deletar-usuario)
+  - [deletar](#deletar-usuario)
   - [listar](#listar-usuarios)
 
 ---
 
+## Cursos
 
 ### Cadastrar Curso
 
@@ -60,7 +63,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ---
 
-### Detalhes do curso
+### Detalhar curso
 
 `GET` /profit/api/curso/{id}
 
@@ -190,7 +193,11 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 | 404 | cursos não encontrados
 | 500 | internal server error
 
+<br>
+
 ---
+
+## Simulacao
 ### Simular investimento
 
 `POST` /profit/api/simulador
@@ -201,6 +208,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 |-------|------|:-------------:|---
 | valor_inicial | decimal| sim | o valor inicial do investimento
 | valor_aporte | decimal | nao | a valor do aporte mensal
+| tipo_investimento | texto | sim | o tipo do investimento
 | nivel| texto | sim | nivel de risco do investimento
 | tempo_invest | texto | sim | tempo que irá manter o dinheiro investido
 
@@ -210,6 +218,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 {
   valor_inicial: 10.000,
   valor_aporte: 500.00,
+  tipo_investimento: 'CDB 16% a.a.'
   nivel: 'Intermediario',
   tempo_invest: 'De 1 a 5 anos'
 }
@@ -222,9 +231,13 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 | 201 | simulação retornada com sucesso
 | 400 | campos inválidos
 
+<br>
+
 ---
 
-### Cadastrar usuário
+## Usuarios
+
+### Cadastrar usuario
 
 `POST` /profit/api/usuario
 
@@ -258,7 +271,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ---
 
-### Detalhes do usuário
+### Detalhar usuario
 
 `GET` /profit/api/usuario/{id}
 
@@ -282,7 +295,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ---
 
-### Editar usuário
+### Editar usuario
 
 `PUT` /profit/api/usuario/{id}
 
@@ -316,7 +329,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 | 408 | tempo esgotado
 | 500 | internal server error
 
-### Deletar usuário
+### Deletar usuario
 
 `DELETE` /profit/api/usuario/{id}
 
