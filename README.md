@@ -26,7 +26,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ### Cadastrar Curso
 
-`POST` /profit/api/user/{id}/curso
+`POST` /profit/api/user/{userId}/curso
 
 **Campos de Requisição**
 
@@ -89,7 +89,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ### Editar curso
 
-`PUT` /profit/api/user/{id}/curso/{id}
+`PUT` /profit/api/user/{userId}/curso/{cursoId}
 
 **Campos de Edição**
 
@@ -125,7 +125,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ### Deletar curso
 
-`DELETE` /profit/api/user/{id}/curso/{id}
+`DELETE` /profit/api/user/{userId}/curso/{cursoId}
 
 **Campos**
 
