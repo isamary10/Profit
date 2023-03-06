@@ -22,6 +22,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
   - [editar](#editar-usuario)
   - [deletar](#deletar-usuario)
   - [listar](#listar-usuarios)
+---
 
 ## Cursos
 
