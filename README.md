@@ -229,10 +229,34 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Códigos de Repostas**
 
-| codigo | descricao                       |
-| ------ | ------------------------------- |
-| 201    | simulação retornada com sucesso |
-| 400    | campos inválidos                |
+| codigo | descricao                        |
+| ------ | -------------------------------- |
+| 201    | simulação cadastrada com sucesso |
+| 400    | campos inválidos                 | 
+
+---
+
+###Retorno do simulador
+
+`GET` /profit/api/simulador/{id}
+
+```js
+{
+  valor_inicial: 10.000,
+  valor_aporte: 500.00,
+  tipo_investimento: 'CDB 16% a.a.',
+  nivel: 'Intermediario',
+  tempo_invest: 'De 1 a 5 anos',
+  rentabilidade: 15.000
+}
+```
+**Códigos de Repostas**
+
+| codigo | descricao                                        |
+| ------ | ------------------------------------------------ |
+| 200    | simulação do investimento retornado com sucesso  |
+| 404    | simulação não encontrada                         |
+| 500    | internal server error                            |
 
 <br>
 
