@@ -246,12 +246,12 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Requisição**
 
-| campo    | tipo  | obrigatório | descrição                               |
-| -------- | ----- | :---------: | --------------------------------------- |
-| nome     | texto |     sim     | o nome completo do usuário              |
-| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos |
-| email    | email |     sim     | o email do usuário                      |
-| telefone | texto |     sim     | o telefone do usuario                   |
+| campo    | tipo  | obrigatório | descrição                                            |
+| -------- | ----- | :---------: | ---------------------------------------------------- |
+| nome     | texto |     sim     | o nome completo do usuário                           |
+| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos              |
+| email    | email |     sim     | o email do usuário não deve conter espaços           |
+| telefone | texto |     sim     | o telefone do usuario pode conter de 10 a 11 digitos |
 
 **Exemplo de corpo de requisição**
 
@@ -304,21 +304,21 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Edição**
 
-| campo    | tipo  | obrigatório | descrição                               |
-| -------- | ----- | :---------: | --------------------------------------- |
-| nome     | texto |     sim     | o nome completo do usuário              |
-| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos |
-| email    | email |     sim     | o email do usuário                      |
-| telefone | texto |     sim     | o telefone do usuario                   |
+| campo    | tipo  | obrigatório | descrição                                            |
+| -------- | ----- | :---------: | ---------------------------------------------------- |
+| nome     | texto |     sim     | o nome completo do usuário                           |
+| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos              |
+| email    | email |     sim     | o email do usuário não deve conter espaços           |
+| telefone | texto |     sim     | o telefone do usuario pode conter de 10 a 11 digitos |
 
 **Exemplo de corpo de requisição**
 
 ```js
 {
   nome: 'Isabelle Souza Santos',
-  cpf: '345.187.952-24',
+  cpf: '34518795224',
   email: 'isabelle.souza@gmail.com',
-  telefone: '(11)92456-2525'
+  telefone: '11924562525'
 }
 ```
 
@@ -339,21 +339,21 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos**
 
-| campo    | tipo  | obrigatório | descrição                               |
-| -------- | ----- | :---------: | --------------------------------------- |
-| nome     | texto |     sim     | o nome completo do usuário              |
-| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos |
-| email    | email |     sim     | o email do usuário                      |
-| telefone | texto |     sim     | o telefone do usuario                   |
+| campo    | tipo  | obrigatório | descrição                                            |
+| -------- | ----- | :---------: | ---------------------------------------------------- |
+| nome     | texto |     sim     | o nome completo do usuário                           |
+| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos              |
+| email    | email |     sim     | o email do usuário não deve conter espaços           |
+| telefone | texto |     sim     | o telefone do usuario pode conter de 10 a 11 digitos |
 
 **Exemplo de corpo de requisição**
 
 ```js
 {
   nome: 'Isabelle Souza Santos',
-  cpf: '345.187.952-24',
+  cpf: '34518795224',
   email: 'isabelle.souza@gmail.com',
-  telefone: '(11)92456-2525'
+  telefone: '11924562525'
 }
 ```
 
@@ -376,17 +376,17 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 ```js
 {
   nome: 'Isabelle Souza Santos',
-  cpf: '345.187.952-24',
+  cpf: '34518795224',
   email: 'isabelle.souza@gmail.com',
-  telefone: '(11)92456-2525'
+  telefone: '11924562525'
 }
 ```
 ```js
 {
   nome: 'Diego Martins Dias',
-  cpf: '457.125.632-89',
+  cpf: '45712563289',
   email: 'di.martins@hotmail.com',
-  telefone: '(11)96572-5532'
+  telefone: '11965725532'
 }
 ```
 **Códigos de Repostas**
