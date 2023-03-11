@@ -258,9 +258,9 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 ```js
 {
   nome: 'Isabelle Souza Santos',
-  cpf: '345.187.952-24',
+  cpf: '34518795224',
   email: 'isabelle.souza@gmail.com',
-  telefone: '(11)92456-2525'
+  telefone: '11924562525'
 }
 ```
 
@@ -283,9 +283,9 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 ```js
 {
   nome: 'Isabelle Souza Santos',
-  cpf: '345.187.952-24',
+  cpf: '34518795224',
   email: 'isabelle.souza@gmail.com',
-  telefone: '(11)92456-2525'
+  telefone: '11924562525'
 }
 ```
 **Códigos de Repostas**
