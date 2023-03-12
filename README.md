@@ -206,13 +206,13 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Requisição**
 
-| campo              | tipo    | obrigatório | descrição                                 |
-| ------------------ | ------- | :---------: | ----------------------------------------- |
-| valor_inicial      | decimal |     sim     | o valor inicial do investimento           |
-| valor_aporte       | decimal |     nao     | a valor do aporte mensal                  |
-| tipo_investimento  | texto   |     sim     | o tipo do investimento                    |
-| nivel              | texto   |     sim     | nivel de risco do investimento            |
-| tempo_invest       | texto   |     sim     | tempo que irá manter o dinheiro investido |
+| campo              | tipo    | obrigatório | descrição                                                       |
+| ------------------ | ------- | :---------: | --------------------------------------------------------------- |
+| valor_inicial      | decimal |     sim     | o valor inicial do investimento                                 |
+| valor_aporte       | decimal |     nao     | a valor do aporte mensal                                        |
+| tipo_investimento  | texto   |     sim     | o tipo do investimento                                          |
+| taxa_juros         | decimal |     sim     | Taxa de juros anual aplicada sobre o valor investido e aportado |
+| tempo_invest       | texto   |     sim     | Tempo de investimento em meses                                  |
 
 
 **Exemplo de corpo de requisição**
@@ -221,9 +221,9 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 {
   valor_inicial: 10.000,
   valor_aporte: 500.00,
-  tipo_investimento: 'CDB 16% a.a.'
-  nivel: 'Intermediario',
-  tempo_invest: 'De 1 a 5 anos'
+  tipo_investimento: 'Renda Fixa'
+  taxa_juros: 10,
+  tempo_invest: '24
 }
 ```
 
@@ -242,14 +242,25 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  valor_inicial: 10.000,
-  valor_aporte: 500.00,
-  tipo_investimento: 'CDB 16% a.a.',
-  nivel: 'Intermediario',
-  tempo_invest: 'De 1 a 5 anos',
-  rentabilidade: 15.000
+  "valor_total": 14542.07,
+  "investimento_mensal": [
+    {
+      "mes": 1,
+      "valor": 10512.5
+    },
+    {
+      "mes": 2,
+      "valor": 11038.45
+    },
+    {
+      "mes": 3,
+      "valor": 11582.5
+    },
+    ...
+  ]
 }
 ```
+
 **Códigos de Repostas**
 
 | codigo | descricao                                        |
