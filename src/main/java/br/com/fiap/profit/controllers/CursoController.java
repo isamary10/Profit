@@ -28,7 +28,6 @@ public class CursoController {
         return cursoService.buscarPorId(id);
     }
 
-
     @GetMapping("/profit/api/cursos")
     public List<Curso> listar(){
         return cursoService.listarCurso();
