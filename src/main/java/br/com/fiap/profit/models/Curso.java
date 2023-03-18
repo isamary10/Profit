@@ -1,10 +1,8 @@
 package br.com.fiap.profit.models;
 
-import java.time.LocalTime;
-
 public class Curso {
 
-    private Integer id;
+    private Long id;
     private String nome;
     private String duracao;
     private String descricao;
@@ -16,7 +14,7 @@ public class Curso {
                 + link + "]";
     }
 
-    public Curso(Integer id, String nome, String duracao, String descricao, String link) {
+    public Curso(Long id, String nome, String duracao, String descricao, String link) {
         this.id = id;
         this.nome = nome;
         this.duracao = duracao;
@@ -24,15 +22,6 @@ public class Curso {
         this.link = link;
     }
 
-    public Curso(int id2, String nome2, String duracao2, String descricao2, String link2) {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
     public String getNome() {
         return nome;
     }
@@ -57,7 +46,10 @@ public class Curso {
     public void setLink(String link) {
         this.link = link;
     }
-
-    
-
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

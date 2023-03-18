@@ -44,11 +44,11 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  id_usuario: 1,
-  nome: 'Como começar a investir',
-  duracao: '3h',
-  descricao: 'Aprenda os principais conceitos para iniciar no mundos dos investimentos.',
-  link: 'https://edu.b3.com.br/play/curso/52610594'
+  "id_usuario": 1,
+  "nome": "Como começar a investir",
+  "duracao": "3h",
+  "descricao": "Aprenda os principais conceitos para iniciar no mundos dos investimentos.",
+  "link": "https://edu.b3.com.br/play/curso/52610594"
 }
 ```
 
@@ -71,12 +71,12 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 ```js
 {
   usuario{
-    id_usuario: 1
+    "id_usuario": 1
   }
-  nome: 'Como começar a investir',
-  duracao: '3h',
-  descricao: 'Aprenda os principais conceitos para iniciar no mundos dos investimentos.',
-  link: 'https://edu.b3.com.br/play/curso/52610594'
+  "nome": "Como começar a investir",
+  "duracao": "3h",
+  "descricao": "Aprenda os principais conceitos para iniciar no mundos dos investimentos.",
+  "link": "https://edu.b3.com.br/play/curso/52610594"
 }
 ```
 **Códigos de Repostas**
@@ -107,11 +107,11 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  id_usuario: 1,
-  nome: 'Como começar a investir',
-  duracao: '3h',
-  descricao: 'Aprenda os principais conceitos para iniciar no mundos dos investimentos.',
-  link: 'https://edu.b3.com.br/play/curso/52610594'
+  "id_usuario": 1,
+  "nome": "Como começar a investir",
+  "duracao": "3h",
+  "descricao": "Aprenda os principais conceitos para iniciar no mundos dos investimentos.",
+  "link": "https://edu.b3.com.br/play/curso/52610594"
 }
 ```
 
@@ -146,12 +146,12 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 ```js
 {
   usuario{
-    id_usuario: 1
+    "id_usuario": 1
   }
-  nome: 'Como começar a investir',
-  duracao: '3h',
-  descricao: 'Aprenda os principais conceitos para iniciar no mundos dos investimentos.',
-  link: 'https://edu.b3.com.br/play/curso/52610594'
+  "nome": "Como começar a investir",
+  "duracao": "3h",
+  "descricao": "Aprenda os principais conceitos para iniciar no mundos dos investimentos.",
+  "link": "https://edu.b3.com.br/play/curso/52610594"
 }
 ```
 
@@ -173,18 +173,18 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  nome: 'Como começar a investir',
-  duracao: '3h',
-  descricao: 'Aprenda os principais conceitos para iniciar no mundos dos investimentos.',
-  link: 'https://edu.b3.com.br/play/curso/52610594'
+  "nome": "Como começar a investir",
+  "duracao": "3h",
+  "descricao": "Aprenda os principais conceitos para iniciar no mundos dos investimentos.",
+  "link": "https://edu.b3.com.br/play/curso/52610594"
 }
 ```
 ```js
 {
-  nome: 'Entenda o que é renda variável',
-  duracao: '1h',
-  descricao: 'Entenda de vez a diferença entre renda fixa e renda variável e conheça as características e benefícios da renda variável.',
-  link: 'https://edu.b3.com.br/play/curso/52610594'
+  "nome": "Entenda o que é renda variável",
+  "duracao": "1h",
+  "descricao": "Entenda de vez a diferença entre renda fixa e renda variável e conheça as características e benefícios da renda variável.",
+  "link": "https://edu.b3.com.br/play/curso/52610594"
 }
 ```
 **Códigos de Repostas**
@@ -219,11 +219,11 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  valor_inicial: 10.000,
-  valor_aporte: 500.00,
-  tipo_investimento: 'Renda Fixa'
-  taxa_juros: 10,
-  tempo_invest: '24
+  "valor_inicial": 10.000,
+  "valor_aporte": 500.00,
+  "tipo_investimento": "Renda Fixa"
+  "taxa_juros": 10,
+  "tempo_invest": "24
 }
 ```
 
@@ -292,10 +292,10 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  nome: 'Isabelle Souza Santos',
-  cpf: '34518795224',
-  email: 'isabelle.souza@gmail.com',
-  telefone: '11924562525'
+  "nome": "Isabelle Souza Santos",
+  "cpf": "34518795224",
+  "email": "isabelle.souza@gmail.com",
+  "telefone": "11924562525"
 }
 ```
 
@@ -317,10 +317,10 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  nome: 'Isabelle Souza Santos',
-  cpf: '34518795224',
-  email: 'isabelle.souza@gmail.com',
-  telefone: '11924562525'
+  "nome": "Isabelle Souza Santos",
+  "cpf": "34518795224",
+  "email": "isabelle.souza@gmail.com",
+  "telefone": "11924562525"
 }
 ```
 **Códigos de Repostas**
@@ -350,10 +350,10 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  nome: 'Isabelle Souza Santos',
-  cpf: '34518795224',
-  email: 'isabelle.souza@gmail.com',
-  telefone: '11924562525'
+  "nome": "Isabelle Souza Santos",
+  "cpf": "34518795224",
+  "email": "isabelle.souza@gmail.com",
+  "telefone": "11924562525"
 }
 ```
 
@@ -385,10 +385,10 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  nome: 'Isabelle Souza Santos',
-  cpf: '34518795224',
-  email: 'isabelle.souza@gmail.com',
-  telefone: '11924562525'
+  "nome": "Isabelle Souza Santos",
+  "cpf": "34518795224",
+  "email": "isabelle.souza@gmail.com",
+  "telefone": "11924562525"
 }
 ```
 
@@ -410,18 +410,18 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
-  nome: 'Isabelle Souza Santos',
-  cpf: '34518795224',
-  email: 'isabelle.souza@gmail.com',
-  telefone: '11924562525'
+  "nome": "Isabelle Souza Santos",
+  "cpf": "34518795224",
+  "email": "isabelle.souza@gmail.com",
+  "telefone": "11924562525"
 }
 ```
 ```js
 {
-  nome: 'Diego Martins Dias',
-  cpf: '45712563289',
-  email: 'di.martins@hotmail.com',
-  telefone: '11965725532'
+  "nome": "Diego Martins Dias",
+  "cpf": "45712563289",
+  "email": "di.martins@hotmail.com",
+  "telefone": "11965725532"
 }
 ```
 **Códigos de Repostas**
