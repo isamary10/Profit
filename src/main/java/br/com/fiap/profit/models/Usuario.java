@@ -2,13 +2,13 @@ package br.com.fiap.profit.models;
 
 public class Usuario {
 
-    private Integer id;
+    private Long id;
     private String nome;
     private String cpf;
     private String email;
     private String telefone;
 
-    public Usuario(Integer id, String nome, String cpf, String email, String telefone) {
+    public Usuario(Long id, String nome, String cpf, String email, String telefone) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -22,10 +22,10 @@ public class Usuario {
                 + "]";
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getNome() {
