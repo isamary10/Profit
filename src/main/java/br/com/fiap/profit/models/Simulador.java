@@ -2,13 +2,15 @@ package br.com.fiap.profit.models;
 
 public class Simulador {
 
+    private Long id;
     private double valor;
     private double aporte;
     private String tipoInvest;
     private double juros;
     private int tempoInvest;
 
-    public Simulador(double valor, double aporte, String tipoInvest, double juros, int tempoInvest) {
+    public Simulador(Long id, double valor, double aporte, String tipoInvest, double juros, int tempoInvest) {
+        this.id = id;
         this.valor = valor;
         this.aporte = aporte;
         this.tipoInvest = tipoInvest;
@@ -29,8 +31,16 @@ public class Simulador {
 
     @Override
     public String toString() {
-        return "Simulador [valor=" + valor + ", aporte=" + aporte + ", tipoInvest=" + tipoInvest + ", juros=" + juros
-                + ", tempoInvest=" + tempoInvest + "]";
+        return "Simulador [id=" + id + ", valor=" + valor + ", aporte=" + aporte + ", tipoInvest=" + tipoInvest
+                + ", juros=" + juros + ", tempoInvest=" + tempoInvest + "]";
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public double getValor() {
