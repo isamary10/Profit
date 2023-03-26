@@ -1,6 +1,5 @@
 package br.com.fiap.profit.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -25,8 +24,6 @@ import br.com.fiap.profit.repository.CursosRepository;
 public class CursoController {
 
     Logger log = LoggerFactory.getLogger(CursoController.class);
-
-    List<Curso> cursos = new ArrayList<>();
 
     @Autowired
     CursosRepository repository;
