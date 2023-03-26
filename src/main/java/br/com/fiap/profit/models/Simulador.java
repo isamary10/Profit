@@ -1,13 +1,23 @@
 package br.com.fiap.profit.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Simulador {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double valor;
     private double aporte;
     private String tipoInvest;
     private double juros;
     private int tempoInvest;
+
+    public Simulador(){};
 
     public Simulador(Long id, double valor, double aporte, String tipoInvest, double juros, int tempoInvest) {
         this.id = id;
