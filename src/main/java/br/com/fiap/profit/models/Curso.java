@@ -1,18 +1,22 @@
 package br.com.fiap.profit.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Curso {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String duracao;
     private String descricao;
     private String link;
 
-    @Override
-    public String toString() {
-        return "Curso [id=" + id + ", nome=" + nome + ", duracao=" + duracao + ", descricao=" + descricao + ", link="
-                + link + "]";
-    }
+    protected Curso(){}
 
     public Curso(Long id, String nome, String duracao, String descricao, String link) {
         this.id = id;
@@ -20,6 +24,12 @@ public class Curso {
         this.duracao = duracao;
         this.descricao = descricao;
         this.link = link;
+    }
+
+    @Override
+    public String toString() {
+        return "Curso [id=" + id + ", nome=" + nome + ", duracao=" + duracao + ", descricao=" + descricao + ", link="
+                + link + "]";
     }
 
     public String getNome() {

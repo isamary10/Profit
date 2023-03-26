@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,65 +14,73 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.profit.models.Curso;
+import br.com.fiap.profit.repository.CursosRepository;
 
 @RestController
+@RequestMapping("/api/cursos")
 public class CursoController {
 
     Logger log = LoggerFactory.getLogger(CursoController.class);
 
     List<Curso> cursos = new ArrayList<>();
 
-    @GetMapping("/api/cursos")
+    @Autowired
+    CursosRepository repository;
+
+    @GetMapping
     public List<Curso> getAll(){
-        return cursos;
+        return repository.findAll();
     }
 
-    @PostMapping("/api/curso")
+    @PostMapping
     public ResponseEntity<Curso> create(@RequestBody Curso curso){
         log.info("cadastrando curso " + curso);
-        curso.setId(cursos.size() + 1l);
-        cursos.add(curso);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+
+        repository.save(curso);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(curso);
     }
 
-    @GetMapping("/api/curso/{id}")
-    public ResponseEntity<Curso> fidById(@PathVariable Long id){
+    @GetMapping("{id}")
+    public ResponseEntity<Curso> findById(@PathVariable Long id){
         log.info("Buscando um curso com o id " + id);
-        var cursoEncontrado = cursos.stream().filter(c -> c.getId().equals(id)).findFirst();
 
-        if(cursoEncontrado.isEmpty())
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        var cursoEncontrado = repository.findById(id);
+
+        if (cursoEncontrado.isEmpty())
+            return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok(cursoEncontrado.get());
     }
 
-    @DeleteMapping("/api/curso/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Curso> destroy(@PathVariable Long id){
         log.info("Apagando o curso com o id " + id);
-        var cursoEncontrado = cursos.stream().filter(c -> c.getId().equals(id)).findFirst();
+        var cursoEncontrado = repository.findById(id);
 
         if(cursoEncontrado.isEmpty())
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        cursos.remove(cursoEncontrado.get());
+            return ResponseEntity.notFound().build();
 
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        repository.delete(cursoEncontrado.get());
+
+        return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/api/curso/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Curso> update(@PathVariable Long id, @RequestBody Curso curso){
         log.info("Atualizando o curso com o id " + id);
-        var cursoEncontrado = cursos.stream().filter(c -> c.getId().equals(id)).findFirst();
+        var cursoEncontrado = repository.findById(id);
 
         if(cursoEncontrado.isEmpty())
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.notFound().build();
 
-        cursos.remove(cursoEncontrado.get());
         curso.setId(id);
-        cursos.add(curso);
+        repository.save(curso);
 
-        return ResponseEntity.status(HttpStatus.OK).body(curso);
+        return ResponseEntity.ok(curso);
     }
 }

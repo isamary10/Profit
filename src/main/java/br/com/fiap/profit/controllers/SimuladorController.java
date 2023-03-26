@@ -42,7 +42,7 @@ public class SimuladorController {
         log.info("Buscando um somilador com o id " + id);
         var simuladorEncontrado = simuladores.stream().filter(s -> s.getId().equals(id)).findFirst();
 
-        if(simuladorEncontrado.isEmpty())
+        if(simuladorEncontrado.isPresent())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
         return ResponseEntity.ok(simuladorEncontrado.get());
@@ -62,7 +62,7 @@ public class SimuladorController {
         log.info("Atualizando o usuario com o id " + id);
         var simuladorEncontrado = simuladores.stream().filter(s -> s.getId().equals(id)).findFirst();
 
-        if(simuladorEncontrado.isEmpty())
+        if(simuladorEncontrado.isPresent())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
         simuladores.remove(simuladorEncontrado.get());

@@ -43,7 +43,7 @@ public class UsuarioController {
         log.info("Buscando um usuario com o id " + id);
         var usuarioEncontrado = usuarios.stream().filter(u -> u.getId().equals(id)).findFirst();
 
-        if(usuarioEncontrado.isEmpty())
+        if(usuarioEncontrado.isPresent())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
         return ResponseEntity.ok(usuarioEncontrado.get());
@@ -64,7 +64,7 @@ public class UsuarioController {
         log.info("Atualizando o usuario com o id " + id);
         var usuarioEncontrado = usuarios.stream().filter(u -> u.getId().equals(id)).findFirst();
 
-        if(usuarioEncontrado.isEmpty())
+        if(usuarioEncontrado.isPresent())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
         usuarios.remove(usuarioEncontrado.get());
