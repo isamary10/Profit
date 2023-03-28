@@ -238,26 +238,16 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ###Retorno do simulador
 
-`GET` /profit/api/simulador/{id}
+`GET` /profit/api/simulador/{id}/calculo
 
 ```js
 {
-  "valor_total": 14542.07,
-  "investimento_mensal": [
-    {
-      "mes": 1,
-      "valor": 10512.5
-    },
-    {
-      "mes": 2,
-      "valor": 11038.45
-    },
-    {
-      "mes": 3,
-      "valor": 11582.5
-    },
-    ...
-  ]
+  "valor_inicial": 10.000,
+  "valor_aporte": 500.00,
+  "tipo_investimento": "Renda Fixa"
+  "taxa_juros": 10,
+  "tempo_invest": 24,
+  "valor_total": 25.267,56
 }
 ```
 
