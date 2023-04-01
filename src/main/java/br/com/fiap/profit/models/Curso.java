@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Curso {
@@ -11,9 +14,19 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Size(max = 50)
     private String nome;
+
+    @NotNull
     private String duracao;
+
+    @NotBlank
+    @Size(min = 50)
     private String descricao;
+
+    @NotNull
     private String link;
 
     protected Curso(){}

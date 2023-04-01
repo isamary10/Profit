@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.profit.exception.RestNotFoundException;
 import br.com.fiap.profit.models.Curso;
 import br.com.fiap.profit.repository.CursosRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/cursos")
@@ -34,11 +36,10 @@ public class CursoController {
     }
 
     @PostMapping
-    public ResponseEntity<Curso> create(@RequestBody Curso curso){
+    public ResponseEntity<Object> create(@RequestBody @Valid Curso curso){
         log.info("cadastrando curso " + curso);
 
         repository.save(curso);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(curso);
     }
 
@@ -46,38 +47,33 @@ public class CursoController {
     public ResponseEntity<Curso> findById(@PathVariable Long id){
         log.info("Buscando um curso com o id " + id);
 
-        var cursoEncontrado = repository.findById(id);
+        var curso = getCurso(id);
 
-        if (cursoEncontrado.isEmpty())
-            return ResponseEntity.notFound().build();
-
-        return ResponseEntity.ok(cursoEncontrado.get());
+        return ResponseEntity.ok(curso);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Curso> destroy(@PathVariable Long id){
         log.info("Apagando o curso com o id " + id);
-        var cursoEncontrado = repository.findById(id);
 
-        if(cursoEncontrado.isEmpty())
-            return ResponseEntity.notFound().build();
-
-        repository.delete(cursoEncontrado.get());
+        var curso = getCurso(id);
+        repository.delete(curso);
 
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Curso> update(@PathVariable Long id, @RequestBody Curso curso){
+    public ResponseEntity<Curso> update(@PathVariable Long id, @RequestBody @Valid Curso curso){
         log.info("Atualizando o curso com o id " + id);
-        var cursoEncontrado = repository.findById(id);
 
-        if(cursoEncontrado.isEmpty())
-            return ResponseEntity.notFound().build();
-
+        getCurso(id);
         curso.setId(id);
         repository.save(curso);
 
         return ResponseEntity.ok(curso);
+    }
+
+    private Curso getCurso(Long id){
+        return repository.findById(id).orElseThrow(() -> new RestNotFoundException("Curso não encontrado"));
     }
 }

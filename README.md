@@ -35,10 +35,10 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 | campo      | tipo      | obrigatório | descrição                            |
 | ---------- | --------- | :---------: | ------------------------------------ |
 | id_usuario | int       |     sim     | id do usuario previamente cadastrado |
-| nome       | texto     |     sim     | o nome do curso                      |
-| duracao    | LocalTime |     sim     | a duração do curso                   |
-| descricao  | texto     |     sim     | descrição do curso                   |
-| link       | texto     |     sim     | link do curso                        |
+| nome       | texto     |     sim     | o nome do curso é obrigatório        |
+| duracao    | LocalTime |     sim     | a duração do curso é obrigatório     |
+| descricao  | texto     |     sim     | descrição do curso é obrigatório     |
+| link       | texto     |     sim     | link do curso é obrigatório          |
 
 **Exemplo de corpo de requisição**
 
@@ -206,13 +206,13 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Requisição**
 
-| campo              | tipo    | obrigatório | descrição                                                       |
-| ------------------ | ------- | :---------: | --------------------------------------------------------------- |
-| valor_inicial      | decimal |     sim     | o valor inicial do investimento                                 |
-| valor_aporte       | decimal |     nao     | a valor do aporte mensal                                        |
-| tipo_investimento  | texto   |     sim     | o tipo do investimento                                          |
-| taxa_juros         | decimal |     sim     | Taxa de juros anual aplicada sobre o valor investido e aportado |
-| tempo_invest       | texto   |     sim     | Tempo de investimento em meses                                  |
+| campo              | tipo    | obrigatório | descrição                                                                     |
+| ------------------ | ------- | :---------: | ----------------------------------------------------------------------------- |
+| valor_inicial      | decimal |     sim     | o valor inicial do investimento é obrigatório                                 |
+| valor_aporte       | decimal |     nao     | a valor do aporte mensal                                                      |
+| tipo_investimento  | texto   |     sim     | o tipo do investimento é obrigatório                                          |
+| taxa_juros         | decimal |     sim     | Taxa de juros anual aplicada sobre o valor investido e aportado é obrigatório |
+| tempo_invest       | texto   |     sim     | Tempo de investimento em meses é obrigatório                                  |
 
 
 **Exemplo de corpo de requisição**
@@ -242,22 +242,15 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ```js
 {
+  "id": 1,
+  "valor_inicial": 10.000,
+  "valor_aporte": 500.00,
+  "tipo_investimento": "Renda Fixa"
+  "taxa_juros": 10,
+  "tempo_invest": "24
+}
+{
   "valor_total": 14542.07,
-  "investimento_mensal": [
-    {
-      "mes": 1,
-      "valor": 10512.5
-    },
-    {
-      "mes": 2,
-      "valor": 11038.45
-    },
-    {
-      "mes": 3,
-      "valor": 11582.5
-    },
-    ...
-  ]
 }
 ```
 
@@ -281,12 +274,12 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 **Campos de Requisição**
 
-| campo    | tipo  | obrigatório | descrição                                            |
-| -------- | ----- | :---------: | ---------------------------------------------------- |
-| nome     | texto |     sim     | o nome completo do usuário                           |
-| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos              |
-| email    | email |     sim     | o email do usuário não deve conter espaços           |
-| telefone | texto |     sim     | o telefone do usuario pode conter de 10 a 11 digitos |
+| campo    | tipo  | obrigatório | descrição                                                |
+| -------- | ----- | :---------: | -------------------------------------------------------- |
+| nome     | texto |     sim     | o nome completo do usuário é obrigatório                 |
+| cpf      | texto |     sim     | o cep do usuario deve conter 11 digitos é obrigatório    |
+| email    | email |     sim     | o email do usuário não deve conter espaços é obrigatório |
+| telefone | texto |     sim     | o telefone do usuario pode conter de 10 a 11 digitos     |
 
 **Exemplo de corpo de requisição**
 

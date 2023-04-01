@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.profit.exception.RestNotFoundException;
 import br.com.fiap.profit.models.Usuario;
 import br.com.fiap.profit.repository.UsuariosRepository;
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -35,49 +37,44 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> create(@RequestBody Usuario usuario){
+    public ResponseEntity<Object> create(@RequestBody @Valid Usuario usuario){
         log.info("Cadastrando usuario " + usuario);
 
         repository.save(usuario);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
     }
 
     @GetMapping("{id}")
     public ResponseEntity<Usuario> findById(@PathVariable Long id){
         log.info("Buscando um usuario com o id " + id);
-        var usuarioEncontrado = repository.findById(id);
+        var usuario = getUsuario(id);
 
-        if(usuarioEncontrado.isEmpty())
-            return ResponseEntity.notFound().build();
-
-        return ResponseEntity.ok(usuarioEncontrado.get());
+        return ResponseEntity.ok(usuario);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Usuario> destroy(@PathVariable Long id){
         log.info("Apagando o usuario com o id " + id);
-        var usuarioEncontrado = repository.findById(id);
 
-        if(usuarioEncontrado.isEmpty())
-            return ResponseEntity.notFound().build();
-
-        repository.delete(usuarioEncontrado.get());
+        var usuario = getUsuario(id);
+        repository.delete(usuario);
 
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody @Valid Usuario usuario){
         log.info("Atualizando o usuario com o id " + id);
-        var usuarioEncontrado = repository.findById(id);
 
-        if(usuarioEncontrado.isEmpty())
-            return ResponseEntity.notFound().build();
-
+        getUsuario(id);
         usuario.setId(id);
         repository.save(usuario);
 
         return ResponseEntity.ok(usuario);
+    }
+
+    private Usuario getUsuario(Long id){
+        return repository.findById(id)
+                .orElseThrow(() -> new RestNotFoundException("Usuario não encontrado"));
     }
 }
