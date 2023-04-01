@@ -238,7 +238,7 @@ Uma API para curso de investimentos para iniciantes e simulação de investiment
 
 ###Retorno do simulador
 
-`GET` /profit/api/simulador/{id}
+`GET` /profit/api/simulador/{id}/calculo
 
 ```js
 {
