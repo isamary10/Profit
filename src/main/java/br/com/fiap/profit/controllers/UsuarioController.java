@@ -47,17 +47,13 @@ public class UsuarioController {
     @GetMapping("{id}")
     public ResponseEntity<Usuario> findById(@PathVariable Long id){
         log.info("Buscando um usuario com o id " + id);
-        var usuario = getUsuario(id);
-
-        return ResponseEntity.ok(usuario);
+        return ResponseEntity.ok(getUsuario(id));
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Usuario> destroy(@PathVariable Long id){
         log.info("Apagando o usuario com o id " + id);
-
-        var usuario = getUsuario(id);
-        repository.delete(usuario);
+        repository.delete(getUsuario(id));
 
         return ResponseEntity.noContent().build();
     }
@@ -65,11 +61,9 @@ public class UsuarioController {
     @PutMapping("{id}")
     public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody @Valid Usuario usuario){
         log.info("Atualizando o usuario com o id " + id);
-
         getUsuario(id);
         usuario.setId(id);
         repository.save(usuario);
-
         return ResponseEntity.ok(usuario);
     }
 

@@ -46,30 +46,23 @@ public class CursoController {
     @GetMapping("{id}")
     public ResponseEntity<Curso> findById(@PathVariable Long id){
         log.info("Buscando um curso com o id " + id);
-
-        var curso = getCurso(id);
-
-        return ResponseEntity.ok(curso);
+        return ResponseEntity.ok(getCurso(id));
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Curso> destroy(@PathVariable Long id){
         log.info("Apagando o curso com o id " + id);
 
-        var curso = getCurso(id);
-        repository.delete(curso);
-
+        repository.delete(getCurso(id));
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
     public ResponseEntity<Curso> update(@PathVariable Long id, @RequestBody @Valid Curso curso){
         log.info("Atualizando o curso com o id " + id);
-
         getCurso(id);
         curso.setId(id);
         repository.save(curso);
-
         return ResponseEntity.ok(curso);
     }
 
