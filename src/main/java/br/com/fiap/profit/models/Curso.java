@@ -1,5 +1,13 @@
 package br.com.fiap.profit.models;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.hateoas.EntityModel;
+
+import br.com.fiap.profit.controllers.CursoController;
+import br.com.fiap.profit.controllers.UsuarioController;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,11 +19,9 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data //getter, setter, constructor, to string, equalsAndHashCode
@@ -42,5 +48,15 @@ public class Curso {
 
     @ManyToOne
     private Usuario usuario;
+
+    public EntityModel<Curso> toEntityModel(){
+        return EntityModel.of(
+            this, 
+            linkTo(methodOn(CursoController.class).findById(id)).withSelfRel(),
+            linkTo(methodOn(CursoController.class).destroy(id)).withRel("delete"),
+            linkTo(methodOn(CursoController.class).getAll(null, Pageable.unpaged())).withRel("all"),
+            linkTo(methodOn(UsuarioController.class).findById(this.getUsuario().getId())).withRel("usuario")
+        );
+    }
 
 }

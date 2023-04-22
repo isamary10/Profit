@@ -1,5 +1,13 @@
 package br.com.fiap.profit.models;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.hateoas.EntityModel;
+
+import br.com.fiap.profit.controllers.SimuladorController;
+import br.com.fiap.profit.controllers.UsuarioController;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -56,5 +64,14 @@ public class Simulador {
         return this.rendimento;
     }
 
+    public EntityModel<Simulador> toEntityModel(){
+        return EntityModel.of(
+            this,
+            linkTo(methodOn(SimuladorController.class).findById(id)).withSelfRel(),
+            linkTo(methodOn(SimuladorController.class).destroy(id)).withRel("delete"),
+            linkTo(methodOn(SimuladorController.class).getAll(null, Pageable.unpaged())).withRel("all"),
+            linkTo(methodOn(UsuarioController.class).findById(this.getUsuario().getId())).withRel("usuario")
+        );
+    }
 
 }

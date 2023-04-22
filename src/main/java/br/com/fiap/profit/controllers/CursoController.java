@@ -8,6 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.PagedModel;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,13 +38,19 @@ public class CursoController {
     Logger log = LoggerFactory.getLogger(CursoController.class);
 
     @Autowired
-    CursosRepository repository;
+    CursosRepository repository; 
+
+    @Autowired
+    PagedResourcesAssembler<Object> assembler;
 
     @GetMapping
-    public Page<Curso> getAll(@RequestParam(required = false) String nome, @PageableDefault(size = 5) Pageable pageable){
-        if (nome == null)
-            return repository.findAll(pageable);
-        return repository.findByNomeContaining(nome, pageable);
+    public PagedModel<EntityModel<Object>> getAll(@RequestParam(required = false) String nome,
+                                                @PageableDefault(size = 5) Pageable pageable){
+        Page<Curso> cursos = (nome == null) ?
+            repository.findAll(pageable) :
+            repository.findByNomeContaining(nome, pageable);
+
+        return assembler.toModel(cursos.map(Curso::toEntityModel));
     }
 
     @PostMapping
@@ -46,13 +58,16 @@ public class CursoController {
         log.info("cadastrando curso " + curso);
 
         repository.save(curso);
-        return ResponseEntity.status(HttpStatus.CREATED).body(curso);
+        return ResponseEntity
+            .created(curso.toEntityModel().getRequiredLink("self").toUri())
+            .body(curso.toEntityModel());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Curso> findById(@PathVariable Long id){
+    public EntityModel<Curso> findById(@PathVariable Long id){
         log.info("Buscando um curso com o id " + id);
-        return ResponseEntity.ok(getCurso(id));
+
+        return getCurso(id).toEntityModel();
     }
 
     @DeleteMapping("{id}")
@@ -64,12 +79,12 @@ public class CursoController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Curso> update(@PathVariable Long id, @RequestBody @Valid Curso curso){
+    public EntityModel<Curso> update(@PathVariable Long id, @RequestBody @Valid Curso curso){
         log.info("Atualizando o curso com o id " + id);
         getCurso(id);
         curso.setId(id);
         repository.save(curso);
-        return ResponseEntity.ok(curso);
+        return curso.toEntityModel();
     }
 
     private Curso getCurso(Long id){

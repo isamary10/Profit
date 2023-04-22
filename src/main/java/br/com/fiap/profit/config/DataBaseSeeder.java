@@ -62,21 +62,21 @@ public class DataBaseSeeder implements CommandLineRunner {
         ));
 
         simuladorRepository.saveAll(List.of(
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).usuario(user1).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).usuario(user2).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).usuario(user3).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).usuario(user1).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).usuario(user2).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).usuario(user3).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).usuario(user1).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).usuario(user2).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).usuario(user3).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).usuario(user1).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).usuario(user2).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).usuario(user3).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).usuario(user1).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).usuario(user2).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).usuario(user3).build()
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build()
         ));
 
     }

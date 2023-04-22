@@ -1,13 +1,14 @@
 package br.com.fiap.profit.controllers;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,11 +35,16 @@ public class SimuladorController {
     @Autowired
     SimuladorRepository repository;
 
+    @Autowired
+    PagedResourcesAssembler<Object> assembler;
+
     @GetMapping()
-    public Page<Simulador> getAll(@RequestParam(required = false) String tipoInvest, @PageableDefault(size = 5) Pageable pageable){
-        if (tipoInvest == null)
-            return repository.findAll(pageable);
-        return repository.findBytipoInvestContaining(tipoInvest, pageable);
+    public PagedModel<EntityModel<Object>> getAll(@RequestParam(required = false) String tipoInvest, 
+                                                @PageableDefault(size = 5) Pageable pageable){
+        Page<Simulador> simuladores = (tipoInvest == null) ?
+            repository.findAll(pageable) :
+            repository.findBytipoInvestContaining(tipoInvest, pageable);
+        return assembler.toModel(simuladores.map(Simulador::toEntityModel));
     }
 
     @PostMapping()
@@ -48,29 +54,34 @@ public class SimuladorController {
 
         simulador.calcularInvestimento(simulador.getValor(), simulador.getAporte(), simulador.getJuros(), simulador.getTempoInvest());
         repository.save(simulador);
-        return ResponseEntity.status(HttpStatus.CREATED).body(simulador);
+
+        return ResponseEntity
+            .created(simulador.toEntityModel().getRequiredLink("self").toUri())
+            .body(simulador.toEntityModel());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Simulador> findById(@PathVariable Long id){
+    public EntityModel<Simulador> findById(@PathVariable Long id){
         log.info("Buscando um simulador com o id " + id);
-        return ResponseEntity.ok(getSimulador(id));
+
+        return getSimulador(id).toEntityModel();
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Simulador> destroy(@PathVariable Long id){
         log.info("Apagando o simulador com o id " + id);
+
         repository.delete(getSimulador(id));
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Simulador> update(@PathVariable Long id, @RequestBody @Valid Simulador simulador){
+    public EntityModel<Simulador> update(@PathVariable Long id, @RequestBody @Valid Simulador simulador){
         log.info("Atualizando o usuario com o id " + id);
         getSimulador(id);
         simulador.setId(id);
         repository.save(simulador);
-        return ResponseEntity.ok(simulador);
+        return simulador.toEntityModel();
     }
 
     private Simulador getSimulador(Long id) {
