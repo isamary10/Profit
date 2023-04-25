@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.profit.exception.RestNotFoundException;
+import br.com.fiap.profit.models.Credencial;
 import br.com.fiap.profit.models.Usuario;
 import br.com.fiap.profit.repository.UsuariosRepository;
 import jakarta.validation.Valid;
@@ -31,6 +34,12 @@ public class UsuarioController {
     @Autowired
     UsuariosRepository repository;
 
+    @Autowired
+    AuthenticationManager manager;
+
+    @Autowired
+    PasswordEncoder encoder;
+
     @GetMapping
     public List<Usuario> getAll(){
         return repository.findAll();
@@ -39,9 +48,15 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity<Object> create(@RequestBody @Valid Usuario usuario){
         log.info("Cadastrando usuario " + usuario);
-
+        usuario.setSenha(encoder.encode(usuario.getSenha()));
         repository.save(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+    }
+
+    @PostMapping("/api/login")
+    public ResponseEntity<Object> login(@RequestBody @Valid Credencial credencial){
+        manager.authenticate(credencial.toAuhentication());
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("{id}")

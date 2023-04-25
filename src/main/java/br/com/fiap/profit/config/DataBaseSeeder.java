@@ -28,9 +28,9 @@ public class DataBaseSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Usuario user1 = new Usuario(1L, "Isa Mary", "31525876592", "isa@gmail.com", "11987543256");
-        Usuario user2 = new Usuario(2L, "Diogo", "75894652136", "diogo@gmail.com", "11978543265");
-        Usuario user3 = new Usuario(3L, "Luiza", "52698745612", "luiza@gmail.com", "11945782652");
+        Usuario user1 = new Usuario(1L, "Isa Mary", "123456", "31525876592", "isa@gmail.com", "11987543256");
+        Usuario user2 = new Usuario(2L, "Diogo", "45679", "75894652136", "diogo@gmail.com", "11978543265");
+        Usuario user3 = new Usuario(3L, "Luiza", "147852", "52698745612", "luiza@gmail.com", "11945782652");
 
         usuariosRepository.saveAll(List.of(user1, user2, user3));
 
