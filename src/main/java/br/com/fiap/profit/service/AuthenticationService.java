@@ -10,7 +10,7 @@ import br.com.fiap.profit.repository.UsuariosRepository;
 
 @Service
 public class AuthenticationService implements UserDetailsService {
-  
+
   @Autowired
   UsuariosRepository repository;
 

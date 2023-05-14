@@ -22,6 +22,7 @@ import br.com.fiap.profit.exception.RestNotFoundException;
 import br.com.fiap.profit.models.Credencial;
 import br.com.fiap.profit.models.Usuario;
 import br.com.fiap.profit.repository.UsuariosRepository;
+import br.com.fiap.profit.service.TokenService;
 import jakarta.validation.Valid;
 
 
@@ -40,6 +41,9 @@ public class UsuarioController {
     @Autowired
     PasswordEncoder encoder;
 
+    @Autowired
+    TokenService tokenService;
+
     @GetMapping
     public List<Usuario> getAll(){
         return repository.findAll();
@@ -53,10 +57,11 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
     }
 
-    @PostMapping("/api/login")
+    @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody @Valid Credencial credencial){
         manager.authenticate(credencial.toAuhentication());
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken(credencial);
+        return ResponseEntity.ok(token);
     }
 
     @GetMapping("{id}")
