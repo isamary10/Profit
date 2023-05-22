@@ -2,6 +2,7 @@ package br.com.fiap.profit.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,10 +24,15 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fiap.profit.exception.RestNotFoundException;
 import br.com.fiap.profit.models.Simulador;
 import br.com.fiap.profit.repository.SimuladorRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/simuladores")
+@SecurityRequirement(name = "bearer-key")
 public class SimuladorController {
 
     Logger log = LoggerFactory.getLogger(SimuladorController.class);
@@ -38,8 +44,9 @@ public class SimuladorController {
     PagedResourcesAssembler<Object> assembler;
 
     @GetMapping()
-    public PagedModel<EntityModel<Object>> getAll(@RequestParam(required = false) String tipoInvest, 
-                                                @PageableDefault(size = 5) Pageable pageable){
+    public PagedModel<EntityModel<Object>> getAll(
+        @RequestParam(required = false) String tipoInvest, 
+        @ParameterObject @PageableDefault(size = 5) Pageable pageable){
         Page<Simulador> simuladores = (tipoInvest == null) ?
             repository.findAll(pageable) :
             repository.findBytipoInvestContaining(tipoInvest, pageable);
@@ -47,6 +54,10 @@ public class SimuladorController {
     }
 
     @PostMapping()
+    @ApiResponses({
+        @ApiResponse(responseCode = "201", description = "simulador cadastrado com sucesso"),
+        @ApiResponse(responseCode = "400", description = "dados inálidos, a validação falhou")
+    })
     public ResponseEntity<Object> create(@RequestBody @Valid Simulador simulador){
         // if(result.hasErrors()) return ResponseEntity.badRequest().body(new RestValidationError("erro de validação"));
         log.info("Cadastrando simulacao " + simulador);
@@ -60,6 +71,10 @@ public class SimuladorController {
     }
 
     @GetMapping("{id}")
+    @Operation(
+        summary = "Detalhes da simulação",
+        description = "Retorna os dados de uma simulação passada pelo parâmetro de path id"
+    )
     public EntityModel<Simulador> findById(@PathVariable Long id){
         log.info("Buscando um simulador com o id " + id);
 

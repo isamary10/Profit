@@ -23,11 +23,13 @@ import br.com.fiap.profit.models.Credencial;
 import br.com.fiap.profit.models.Usuario;
 import br.com.fiap.profit.repository.UsuariosRepository;
 import br.com.fiap.profit.service.TokenService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 
 @RestController
 @RequestMapping("/api/usuarios")
+@Tag(name = "auth")
 public class UsuarioController {
 
     Logger log = LoggerFactory.getLogger(UsuarioController.class);

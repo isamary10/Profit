@@ -4,17 +4,15 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.PagedModel;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +27,15 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fiap.profit.exception.RestNotFoundException;
 import br.com.fiap.profit.models.Curso;
 import br.com.fiap.profit.repository.CursosRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/cursos")
+@SecurityRequirement(name = "bearer-key")
 public class CursoController {
 
     Logger log = LoggerFactory.getLogger(CursoController.class);
@@ -44,8 +47,9 @@ public class CursoController {
     PagedResourcesAssembler<Object> assembler;
 
     @GetMapping
-    public PagedModel<EntityModel<Object>> getAll(@RequestParam(required = false) String nome,
-                                                @PageableDefault(size = 5) Pageable pageable){
+    public PagedModel<EntityModel<Object>> getAll(
+        @RequestParam(required = false) String nome,
+        @ParameterObject @PageableDefault(size = 5) Pageable pageable) {
         Page<Curso> cursos = (nome == null) ?
             repository.findAll(pageable) :
             repository.findByNomeContaining(nome, pageable);
@@ -54,6 +58,10 @@ public class CursoController {
     }
 
     @PostMapping
+    @ApiResponses({
+        @ApiResponse(responseCode = "201", description = "curso cadastrado com sucesso"),
+        @ApiResponse(responseCode = "400", description = "dados invalidos, a validação falhou")
+    })
     public ResponseEntity<Object> create(@RequestBody @Valid Curso curso){
         log.info("cadastrando curso " + curso);
 
@@ -64,6 +72,10 @@ public class CursoController {
     }
 
     @GetMapping("{id}")
+    @Operation(
+        summary = "Detalhes do curso",
+        description = "Retorna os dados de um curso passado pelo parâmetrode path id"
+    )
     public EntityModel<Curso> findById(@PathVariable Long id){
         log.info("Buscando um curso com o id " + id);
 
