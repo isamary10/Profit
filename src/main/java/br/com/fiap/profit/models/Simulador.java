@@ -33,7 +33,7 @@ public class Simulador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Min(value = 100, message = "Deve ser igual ou maior que 100")
+    @Min(value = 100, message = "Valor deve ser igual ou maior que 100")
     @NotNull
     private double valor;
 
