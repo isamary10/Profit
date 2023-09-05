@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.profit.Services.SimuladorService;
 import br.com.fiap.profit.exception.RestNotFoundException;
 import br.com.fiap.profit.models.Simulador;
 import br.com.fiap.profit.repository.SimuladorRepository;

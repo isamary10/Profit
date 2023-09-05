@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import br.com.fiap.profit.models.Curso;
 import br.com.fiap.profit.models.Simulador;
@@ -26,6 +27,7 @@ public class DataBaseSeeder implements CommandLineRunner {
     SimuladorRepository simuladorRepository;
 
     @Override
+    @Profile("dev")
     public void run(String... args) throws Exception {
 
         Usuario user1 = new Usuario(1L, "Isa Mary", "123456", "31525876592", "isa@gmail.com", "11987543256");
