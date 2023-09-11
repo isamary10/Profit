@@ -15,6 +15,7 @@ import br.com.fiap.profit.repository.SimuladorRepository;
 import br.com.fiap.profit.repository.UsuariosRepository;
 
 @Configuration
+@Profile("dev")
 public class DataBaseSeeder implements CommandLineRunner {
 
     @Autowired
@@ -40,45 +41,45 @@ public class DataBaseSeeder implements CommandLineRunner {
             Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Fixa")
                 .link("www.curso.com.br.debenture").usuario(user1).build(),
             Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Variável")
-                .link("www.curso.com.br.debenture").usuario(user2).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Day Trade")
-                .link("www.curso.com.br.debenture").usuario(user3).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Fixa")
-                .link("www.curso.com.br.debenture").usuario(user1).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Variável")
-                .link("www.curso.com.br.debenture").usuario(user2).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Day Trade")
-                .link("www.curso.com.br.debenture").usuario(user3).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Fixa")
-                .link("www.curso.com.br.debenture").usuario(user1).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Variável")
-                .link("www.curso.com.br.debenture").usuario(user2).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Day Trade")
-                .link("www.curso.com.br.debenture").usuario(user3).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Fixa")
-                .link("www.curso.com.br.debenture").usuario(user1).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Variável")
-                .link("www.curso.com.br.debenture").usuario(user2).build(),
-            Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Day Trade")
-                .link("www.curso.com.br.debenture").usuario(user3).build()
+                .link("www.curso.com.br.debenture").usuario(user2).build()
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Day Trade")
+            //     .link("www.curso.com.br.debenture").usuario(user3).build(),
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Fixa")
+            //     .link("www.curso.com.br.debenture").usuario(user1).build(),
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Variável")
+            //     .link("www.curso.com.br.debenture").usuario(user2).build(),
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Day Trade")
+            //     .link("www.curso.com.br.debenture").usuario(user3).build(),
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Fixa")
+            //     .link("www.curso.com.br.debenture").usuario(user1).build(),
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Variável")
+            //     .link("www.curso.com.br.debenture").usuario(user2).build(),
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Day Trade")
+            //     .link("www.curso.com.br.debenture").usuario(user3).build(),
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Fixa")
+            //     .link("www.curso.com.br.debenture").usuario(user1).build(),
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Renda Variável")
+            //     .link("www.curso.com.br.debenture").usuario(user2).build(),
+            // Curso.builder().nome("Debentures").duracao("4h").descricao("Curso de Day Trade")
+            //     .link("www.curso.com.br.debenture").usuario(user3).build()
         ));
 
         simuladorRepository.saveAll(List.of(
             Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
             Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
             Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
-            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build()
+            Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build()
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("CDB").tempoInvest(24).juros(10).rendimento(25000.00).usuario(user1).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Tesouro Direto").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user2).build(),
+            // Simulador.builder().valor(10000.00).aporte(500.00).tipoInvest("Debenture").tempoInvest(36).juros(10).rendimento(25000.00).usuario(user3).build()
         ));
 
     }
