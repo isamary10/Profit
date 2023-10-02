@@ -34,7 +34,7 @@ public class AuthorizationFilter extends OncePerRequestFilter {
       var usuario = tokenService.getValidateUser(token);
 
       // cria o objeto de autenticação com os dados do usuário autenticado
-      Authentication auth = new UsernamePasswordAuthenticationToken(usuario.getEmail(), null, usuario.getAuthorities());
+      Authentication auth = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
 
       // seta o usuario autenticado
       SecurityContextHolder.getContext().setAuthentication(auth);

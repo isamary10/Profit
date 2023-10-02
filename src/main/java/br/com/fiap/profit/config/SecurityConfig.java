@@ -31,12 +31,15 @@ public class SecurityConfig {
           .requestMatchers(HttpMethod.POST, "/api/simuladores").permitAll()
           .requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
           .requestMatchers(HttpMethod.POST, "/api/usuarios/login").permitAll()
+          .requestMatchers("/h2-console","/h2-console/**").permitAll()
           .requestMatchers("/v3/api-docs**", "/swagger-ui**").permitAll()
         .and()
         .csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
         .formLogin().disable()
+        .headers().frameOptions().disable()
+        .and()
         .addFilterBefore(authorizationFilter, UsernamePasswordAuthenticationFilter.class);
 
         if (env.getActiveProfiles().length > 0 && env.getActiveProfiles()[0].equals("open")){

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import br.com.fiap.profit.models.Curso;
 import br.com.fiap.profit.models.Simulador;
@@ -27,13 +28,16 @@ public class DataBaseSeeder implements CommandLineRunner {
     @Autowired
     SimuladorRepository simuladorRepository;
 
+    @Autowired
+    PasswordEncoder encoder;
+
     @Override
     @Profile("dev")
     public void run(String... args) throws Exception {
 
-        Usuario user1 = new Usuario(1L, "Isa Mary", "123456", "31525876592", "isa@gmail.com", "11987543256");
-        Usuario user2 = new Usuario(2L, "Diogo", "45679", "75894652136", "diogo@gmail.com", "11978543265");
-        Usuario user3 = new Usuario(3L, "Luiza", "147852", "52698745612", "luiza@gmail.com", "11945782652");
+        Usuario user1 = new Usuario(1L, "Isa Mary", encoder.encode("123456"), "31525876592", "isa@gmail.com", "11987543256");
+        Usuario user2 = new Usuario(2L, "Diogo",  encoder.encode("78910"), "75894652136", "diogo@gmail.com", "11978543265");
+        Usuario user3 = new Usuario(3L, "Luiza",  encoder.encode("111213"), "52698745612", "luiza@gmail.com", "11945782652");
 
         usuariosRepository.saveAll(List.of(user1, user2, user3));
 

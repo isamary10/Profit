@@ -11,6 +11,7 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fiap.profit.Services.SimuladorService;
 import br.com.fiap.profit.exception.RestNotFoundException;
 import br.com.fiap.profit.models.Simulador;
+import br.com.fiap.profit.models.Usuario;
 import br.com.fiap.profit.repository.SimuladorRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -62,6 +64,9 @@ public class SimuladorController {
     public ResponseEntity<Object> create(@RequestBody @Valid Simulador simulador){
         // if(result.hasErrors()) return ResponseEntity.badRequest().body(new RestValidationError("erro de validação"));
         log.info("Cadastrando simulacao " + simulador);
+
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        simulador.setUsuario((Usuario) auth.getPrincipal());
 
         simulador.calcularInvestimento(simulador.getValor(), simulador.getAporte(), simulador.getJuros(), simulador.getTempoInvest());
         repository.save(simulador);
